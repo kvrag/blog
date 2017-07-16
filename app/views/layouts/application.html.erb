@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyBlog</title>
+    <title>My Blog</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag    'normalize', media: 'all' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+
+    <nav>
+    <div id="avatar">
+      <%= link_to root_path do %>
+        <%= image_tag "github_avatar.jpeg" %>
+      <% end %>
+    </div>
+
+      <ul class="nav-list">
+        <li class="category">Website</li>
+        <li><%= link_to "Blog", root_path %></li>
+        <li>About</li>
+      </ul>
+
+      <ul class="nav-list">
+        <li class="category">Social</li>
+        <li><a href="http://github.com/kvrag">GitHub</a></li>
+        <li><a href="http://www.twitter.com/kvrag">Twitter</a></li>
+        <li><a href="http://www.linkedin.com/in/kvragovic">LinkedIn</a></li>
+      </ul>
+
+      <p class="sign-in">Admin Login</p>
+    </nav>
+
+    <div id="main-content">
+      <header>
+        <p>All Posts</p>
+
+        <div class="buttons">
+          <button class="button"><%= link_to "New Post", new_post_path %></button>
+          <button class="button">Log Out</button>
+        </div>
+      </header>
+
+        <% flash.each do |name, message| %>
+          <%= content_tag(:div, message, class: "alert") %>
+        <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
