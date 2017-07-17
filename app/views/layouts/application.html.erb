@@ -17,12 +17,6 @@
   <body>
 
     <nav>
-<!--     <div id="avatar">
-      <%= link_to root_path #do %>
-        <%= image_tag #{}"github_avatar.jpeg" %>
-      <% #end %>
-    </div> -->
-
       <ul class="nav-list">
         <li class="category">Website</li>
         <li><%= link_to "Blog", root_path %></li>
@@ -59,7 +53,8 @@
         <% flash.each do |name, message| %>
           <%= content_tag(:div, message, class: "alert") %>
         <% end %>
-    </div>
+
     <%= yield %>
+    </div>
   </body>
 </html>
